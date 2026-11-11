@@ -1,9 +1,11 @@
 import React from 'react'
+import AdminLayout from './layouts/AdminLayout'
+
 
 const App = () => {
   return (
     <div>
-      Hello world
+      <AdminLayout/>
     </div>
   )
 }
