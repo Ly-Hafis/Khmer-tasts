@@ -1,7 +1,9 @@
 import React from 'react'
 import FoodDetail from './pages/customer/FoodDetail'
 import Menu from './pages/customer/Menu'
-import { BrowserRouter, Route, Routes} from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import AdminLayout from './layouts/AdminLayout'
+
 
 const App = () => {
   return (
@@ -9,13 +11,14 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/"
-            element={<Menu/>} />
-           
-          <Route path="/food/:id" element={<FoodDetail/>}/>
+            element={<Menu />} />
+
+          <Route path="/food/:id" element={<FoodDetail />} />
         </Routes>
       </BrowserRouter>
-     
 
+
+      <AdminLayout />
     </div>
   )
 }
