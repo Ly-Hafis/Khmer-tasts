@@ -24,7 +24,7 @@ const Register = () => {
             return;
         }
 
-        // get old data LocalStorage
+        // Get old data LocalStorage
         const existingUsers = JSON.parse(localStorage.getItem('customer_users')) || [];
 
         // Check email if they have used

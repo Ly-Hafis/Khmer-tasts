@@ -1,21 +1,24 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // Login Handle
   const handleLogin = (e) => {
     e.preventDefault();
-    
+
     // Check is Admin or not
-    if (email === 'admin@gmail.com' && password === 'admin123') {
+    if (email === 'lyhafis037@gmail.com' && password === 'admin123') {
       localStorage.setItem('admin_token', 'admin_logged_in');
       localStorage.setItem('user_role', 'admin');
       Swal.fire({ title: 'Welcome Admin!', text: 'Login successful', icon: 'success', timer: 1500, showConfirmButton: false });
-      navigate('/admin'); 
+      navigate('/admin');
       return;
     }
 
@@ -34,6 +37,43 @@ const Login = () => {
     }
   };
 
+  // Google handle
+  const handleGoogleSuccess = (credentialResponse) => {
+    const decoded = jwtDecode(credentialResponse.credential);
+    console.log("Google User Info:", decoded);
+
+    const adminEmail = "lyhafis037@gmail.com"; 
+
+    if (decoded.email === adminEmail) {
+      // if Admin
+      localStorage.setItem('admin_token', 'admin_logged_in');
+      localStorage.setItem('user_role', 'admin');
+      
+      Swal.fire({ title: 'Welcome Admin!', text: 'Google Login successful', icon: 'success', timer: 1500, showConfirmButton: false });
+      navigate('/admin'); // to Dashboard
+      
+    } else {
+      // if Customer 
+      const googleUser = {
+        id: decoded.sub,
+        name: decoded.name,
+        email: decoded.email,
+        picture: decoded.picture
+      };
+
+      localStorage.setItem('user_token', 'google_logged_in');
+      localStorage.setItem('user_role', 'customer');
+      localStorage.setItem('current_user', JSON.stringify(googleUser));
+
+      Swal.fire({ title: 'Welcome!', text: 'Logged in with Google', icon: 'success', timer: 1500, showConfirmButton: false });
+      navigate('/'); // to Customer
+    }
+  };
+
+  const handleGoogleError = () => {
+    Swal.fire('Error', 'Google Login Failed', 'error');
+  };
+
   return (
     <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 w-full max-w-md animate-fade-in-up">
       <div className="text-center mb-8">
@@ -44,23 +84,23 @@ const Login = () => {
       <form onSubmit={handleLogin} className="space-y-5">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-          <input 
-            type="email" 
-            required 
+          <input
+            type="email"
+            required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white transition-all" 
+            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white transition-all"
             placeholder="Enter your email"
           />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-          <input 
-            type="password" 
-            required 
+          <input
+            type="password"
+            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white transition-all" 
+            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white transition-all"
             placeholder="••••••••"
           />
         </div>
@@ -68,6 +108,20 @@ const Login = () => {
           Sign In
         </button>
       </form>
+      <div className="mt-6 flex items-center justify-between">
+        <span className="border-b w-1/5 lg:w-1/4"></span>
+        <span className="text-xs text-center text-gray-500 uppercase">or login with</span>
+        <span className="border-b w-1/5 lg:w-1/4"></span>
+      </div>
+
+      {/* Google Login */}
+      <div className="mt-6 flex justify-center">
+        <GoogleLogin
+          onSuccess={handleGoogleSuccess}
+          onError={handleGoogleError}
+          useOneTap
+        />
+      </div>
 
       <p className="mt-8 text-center text-gray-600">
         Don't have an account?{' '}
