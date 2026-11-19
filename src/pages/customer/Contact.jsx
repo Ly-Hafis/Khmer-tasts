@@ -44,7 +44,7 @@ function Contact() {
         </p>
 
         <h2 className="mt-1.5 text-2xl font-extrabold text-slate-900 md:text-3xl">
-          Contact <span className="text-[#e99b16]">FoodZone</span> Team
+          Contact <span className="text-[#e99b16]">Khmer Food</span> Team
         </h2>
 
         <p className="mt-2 text-sm text-gray-500">
@@ -86,7 +86,7 @@ function Contact() {
                 <div>
                   <h4 className="text-xs font-bold">Email Address</h4>
                   <p className="text-xs text-slate-400">
-                    support@foodzone.com
+                    support@khmerfood.com
                   </p>
                 </div>
               </div>
@@ -221,7 +221,7 @@ function Contact() {
             {/* SUBMIT BUTTON */}
             <button
               type="submit"
-              className="flex items-center gap-2 rounded-lg bg-[#e99b16] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-orange-600 active:scale-95"
+              className="flex items-center rounded-3 gap-2 rounded-lg bg-[#eb3b3b] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-orange-600 active:scale-95"
             >
               <span>➤</span>
               Submit Message

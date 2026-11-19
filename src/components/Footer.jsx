@@ -104,7 +104,7 @@ const Footer = ({ setActiveView }) => {
             </li>
             <li className="flex items-center gap-3">
               <span className="text-[#ff9f0a]">✉</span>
-              <span className="text-slate-400">support@foodzone.com</span>
+              <span className="text-slate-400">support@khmerfood.com</span>
             </li>
           </ul>
         </div>
@@ -114,7 +114,7 @@ const Footer = ({ setActiveView }) => {
       <div className="border-t border-slate-800">
         <div className="mx-auto max-w-7xl px-6 py-7 text-center">
           <p className="text-[12px] text-slate-500">
-            © {new Date().getFullYear()} FoodZone. All rights reserved. Powered
+            © {new Date().getFullYear()} KhmerFood. All rights reserved. Powered
             by React & Tailwind CSS.
           </p>
         </div>
