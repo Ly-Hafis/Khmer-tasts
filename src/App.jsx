@@ -14,9 +14,12 @@ import Dashboard from './pages/admin/Dashboard';
 import Products from './pages/admin/Products';
 import Orders from './pages/admin/Orders';
 import Categories from './pages/admin/Categories';
+import Customers from './pages/admin/Customers';
 
 //Security Component
 import ProtectedRoute from './components/ProtectedRoute';
+import Reviews from './pages/admin/Reviews';
+import Settings from './pages/admin/Settings';
 
 function App() {
   return (
@@ -28,13 +31,13 @@ function App() {
         <Route path="/food/:id" element={<FoodDetail />} />
       </Route>
 
-      {/* --- Login and Register --- */}
+      {/* Login and Register */}
       <Route element={<AuthLayout />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Route>
 
-      {/* ---Admin have ProtectedRoute*/}
+      {/* Admin have ProtectedRoute*/}
       <Route
         path="/admin"
         element={
@@ -47,6 +50,9 @@ function App() {
         <Route path="orders" element={<Orders />} />
         <Route path="products" element={<Products />} />
         <Route path="categories" element={<Categories />} />
+        <Route path="customers" element={<Customers/>} />
+        <Route path="reviews" element={<Reviews/>} />
+        <Route path="settings" element={<Settings/>} />
       </Route>
 
     </Routes>

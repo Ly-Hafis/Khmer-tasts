@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AdminNavbar = ({ onMenuClick, search, setSearch, isDarkMode, setIsDarkMode }) => {
     const [showDropdown, setShowDropdown] = useState(false);
+    const [showNotifications, setShowNotifications] = useState(false);
     const navigate = useNavigate();
     const handleLogout = () => {
         // Delete Key Token admin in Localstorage
@@ -13,6 +14,12 @@ const AdminNavbar = ({ onMenuClick, search, setSearch, isDarkMode, setIsDarkMode
         // Route to Login
         navigate('/login');
     };
+    const notifications = [
+        { id: 1, title: "New Order #ORD-021 received", time: "5 min ago", isRead: false },
+        { id: 2, title: "Sok San just registered", time: "1 hour ago", isRead: false },
+        { id: 3, title: "Product 'Khmer Burger' is low on stock", time: "2 hours ago", isRead: false },
+    ];
+    const unreadCount = notifications.filter(n => !n.isRead).length;
     return (
         <div className="h-20 bg-white border-b border-gray-100 dark:border-gray-500 flex items-center justify-between px-8 dark:bg-gray-900">
             <div className='flex items-center gap-5 '>
@@ -48,16 +55,53 @@ const AdminNavbar = ({ onMenuClick, search, setSearch, isDarkMode, setIsDarkMode
                     )}
                 </button>
 
-                <button className="relative text-gray-500 dark:text-white hover:text-orange-500 transition-colors">
-                    <FiBell className="text-2xl" />
-                    <span className="absolute top-0 right-0 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center border-2 border-white">
-                        3
-                    </span>
-                </button>
-
+                {/* Notification Dropdown */}
                 <div className="relative">
+                    <button
+                        onClick={() => setShowNotifications(!showNotifications)}
+                        className="relative text-gray-500 dark:text-white hover:text-orange-500 transition-colors mt-2 hover:cursor-pointer"
+                    >
+                        <FiBell className="text-2xl" />
 
-                    {/* Profile */}
+                        {unreadCount > 0 && (
+                            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center border-2 border-white dark:border-gray-900">
+                                {unreadCount}
+                            </span>
+                        )}
+                    </button>
+                    {showNotifications && (
+                        <div className="absolute right-0 mt-4 w-80 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden z-50 animate-fade-in-up">
+
+                            {/* Header */}
+                            <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+                                <h3 className="text-sm font-bold text-gray-900 dark:text-white">Notifications</h3>
+                                <button className="text-xs text-orange-500 hover:underline">Mark all as read</button>
+                            </div>
+
+                            {/* List */}
+                            <ul className="max-h-64 overflow-y-auto">
+                                {notifications.map((note) => (
+                                    <li
+                                        key={note.id}
+                                        className={`px-4 py-3 border-b border-gray-50 dark:border-gray-700/50 cursor-pointer transition-colors
+                                            ${!note.isRead ? 'bg-orange-50 dark:bg-gray-700 hover:bg-orange-100' : 'hover:bg-gray-50 dark:hover:bg-gray-700'}`}
+                                    >
+                                        <p className="text-sm text-gray-800 dark:text-gray-200">{note.title}</p>
+                                        <p className="text-xs text-gray-400 mt-1">{note.time}</p>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            {/* Footer */}
+                            <div className="px-4 py-2 text-center border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
+                                <button className="text-xs font-medium text-orange-500 hover:underline">View All Notifications</button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* Profile */}
+                <div className="relative">
                     <div
                         onClick={() => setShowDropdown(!showDropdown)}
                         className="flex items-center space-x-3 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors"

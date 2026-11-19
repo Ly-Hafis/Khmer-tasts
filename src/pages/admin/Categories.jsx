@@ -154,7 +154,6 @@ const Categories = () => {
                                                 >
                                                     <FiEdit className="text-lg" />
                                                 </button>
-                                                {/* 🔴 បានកែប្រែកន្លែងបញ្ជូនទិន្នន័យនៅទីនេះ */}
                                                 <button
                                                     onClick={() => handleDelete(cat)}
                                                     title="Delete"

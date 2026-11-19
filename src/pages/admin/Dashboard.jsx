@@ -1,18 +1,30 @@
 import { FiDollarSign, FiShoppingBag, FiUsers, FiBox, FiTrendingUp } from 'react-icons/fi';
 import { FaShoppingBag } from 'react-icons/fa';
 import { useOutletContext } from 'react-router-dom';
+import { useState } from 'react';
 
 const Dashboard = () => {
+
+    const [realStats, setRealStats] = useState(()=>{
+        const savedCustomers = JSON.parse(localStorage.getItem('customer_users')) || [];
+        const savedProducts = JSON.parse(localStorage.getItem('admin_products')) || [];
+
+        return {
+            customersCount: savedCustomers.length > 0 ? savedCustomers.length : 89,
+            menuItemsCount: savedProducts.length > 0 ? savedProducts.length : 20,
+        };
+    });
+
     const { search } = useOutletContext();
-    // 1. Mock Data for Summary Cards
+
     const stats = [
         { title: "Total Sales", value: "$2,456.00", icon: <FiDollarSign />, trend: "+12.5%", color: "text-green-500", bg: "bg-green-100 dark:bg-green-500/20" },
         { title: "Total Orders", value: "142", icon: <FiShoppingBag />, trend: "+8.2%", color: "text-blue-500", bg: "bg-blue-100 dark:bg-blue-500/20" },
-        { title: "Customers", value: "89", icon: <FiUsers />, trend: "+2.4%", color: "text-orange-500", bg: "bg-orange-100 dark:bg-orange-500/20" },
-        { title: "Menu Items", value: "45", icon: <FiBox />, trend: "+0.0%", color: "text-purple-500", bg: "bg-purple-100 dark:bg-purple-500/20" }
+        { title: "Customers", value: realStats.customersCount, icon: <FiUsers />, trend: "+2.4%", color: "text-orange-500", bg: "bg-orange-100 dark:bg-orange-500/20" },
+        { title: "Menu Items", value: realStats.menuItemsCount, icon: <FiBox />, trend: "+0.0%", color: "text-purple-500", bg: "bg-purple-100 dark:bg-purple-500/20" }
     ];
 
-    // 2. Mock Data for Recent Orders Table
+    //​ Mock Data for Recent Orders Table
     const recentOrders = [
         { id: "#ORD-001", customer: "Sok San", total: "$15.50", status: "Completed", date: "Today, 10:30 AM" },
         { id: "#ORD-002", customer: "Chan Dara", total: "$8.00", status: "Pending", date: "Today, 11:15 AM" },
@@ -56,13 +68,6 @@ const Dashboard = () => {
                     <p className="text-gray-500 mt-2">
                         Welcome to the admin dashboard! Here is your daily summary.
                     </p>
-                </div>
-
-                <div className="relative z-10 bg-white px-4 py-2 rounded-xl shadow-sm border border-gray-100 flex items-center space-x-2 text-sm font-medium text-gray-600">
-                    {/* <span>📅 Today: Nov 11, 2026</span> */}
-                    {/* <span>▼</span> */}
-
-                    <input type="date" />
                 </div>
 
             </div>

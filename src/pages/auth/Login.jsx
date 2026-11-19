@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { GoogleLogin } from '@react-oauth/google';
@@ -9,15 +9,32 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // For password
+  useEffect(() => {
+    if (!localStorage.getItem('admin_credentials')) {
+      const defaultAdmin = {
+        email: 'lyhafis037@gmail.com',
+        password: 'admin123',
+      };
+      localStorage.setItem('admin_credentials', JSON.stringify(defaultAdmin));
+    }
+  }, []);
+
   // Login Handle
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Check is Admin or not
-    if (email === 'lyhafis037@gmail.com' && password === 'admin123') {
+    const adminData = JSON.parse(localStorage.getItem('admin_credentials'));
+    if (adminData && email === adminData.email && password === adminData.password) {
       localStorage.setItem('admin_token', 'admin_logged_in');
       localStorage.setItem('user_role', 'admin');
-      Swal.fire({ title: 'Welcome Admin!', text: 'Login successful', icon: 'success', timer: 1500, showConfirmButton: false });
+      Swal.fire({
+        title: 'Welcome Admin!',
+        text: 'Login successful',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false,
+      });
       navigate('/admin');
       return;
     }
@@ -42,16 +59,16 @@ const Login = () => {
     const decoded = jwtDecode(credentialResponse.credential);
     console.log("Google User Info:", decoded);
 
-    const adminEmail = "lyhafis037@gmail.com"; 
+    const adminEmail = "lyhafis037@gmail.com";
 
     if (decoded.email === adminEmail) {
       // if Admin
       localStorage.setItem('admin_token', 'admin_logged_in');
       localStorage.setItem('user_role', 'admin');
-      
+
       Swal.fire({ title: 'Welcome Admin!', text: 'Google Login successful', icon: 'success', timer: 1500, showConfirmButton: false });
       navigate('/admin'); // to Dashboard
-      
+
     } else {
       // if Customer 
       const googleUser = {
