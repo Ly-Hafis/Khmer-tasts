@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-
+import { useCart } from '../context/CartContext';
 const FootCard = ({ product }) => {
   const [qty, setQty] = useState(1);
-
+  const {addtoCart} = useCart();
   return (
     <div className="w-full h-full bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 p-3 flex flex-col justify-between">
       <div>
@@ -66,6 +66,7 @@ const FootCard = ({ product }) => {
           </Link>
 
           <button
+            onClick ={()=> addtoCart(product,qty)}
             type="button"
             // onClick={() => alert(`Added ${qty}x ${product.name} to cart!`)}
             className="w-full py-2 px-2 bg-orange-600 text-white text-xs sm:text-sm font-semibold rounded-lg hover:bg-orange-700 transition flex items-center justify-center gap-1.5 shadow-sm"
@@ -84,7 +85,7 @@ const FootCard = ({ product }) => {
                 d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
               />
             </svg> */}
-            <span className="truncate">Add to Cart</span>
+            <span  className="truncate">Add to Cart</span>
           </button>
         </div>
       </div>

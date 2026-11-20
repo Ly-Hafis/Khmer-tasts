@@ -16,7 +16,7 @@ const Menu = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-    
+
       <div className="relative w-full h-[380px] md:h-[430px] overflow-hidden">
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3JWHYQE2HzJABwooqKSFi5gqDVRtZ3kZ0G_wbyRmFN9eS3MfMKgd9wJtM&s=10"
@@ -43,21 +43,34 @@ const Menu = () => {
         </div>
       </div>
 
-      {/* Category  */}
+      {/* Category taps */}
       <div className="w-full bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-4">
           <div className="flex flex-nowrap justify-start gap-3 overflow-x-auto scrollbar-hide items-center">
+
+
+            {/* All */}
+            <button
+              onClick={() => setCategory('All')}
+              className={`px-6 py-2.5 text-sm shrink-0 hover:cursor-pointer transition duration-300 whitespace-nowrap rounded-lg font-medium ${category === 'All'
+                ? "bg-orange-500 text-white shadow-md shadow-orange-500/20"
+                : "bg-white dark:bg-[#151928] text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700 hover:text-gray-900 dark:hover:text-white hover:border-gray-400 dark:hover:border-gray-500"
+                }`}
+            >
+              All
+            </button>
+            {/* Category  */}
+
             {cate.map((cat) => (
               <button
-                key={cat}
-                onClick={() => setCategory(cat)}
-                className={`px-6 py-2.5 text-sm shrink-0 transition whitespace-nowrap rounded-lg font-medium ${
-                  category === cat
-                    ? "bg-orange-500 text-white shadow-sm"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                }`}
+                key={cat.id}
+                onClick={() => setCategory(cat.name)}
+                className={`px-6 py-2.5 text-sm shrink-0 transition whitespace-nowrap rounded-lg font-medium ${category === cat.name
+                  ? "bg-orange-500 text-white shadow-sm"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
               >
-                {cat}
+                {cat.name}
               </button>
             ))}
           </div>

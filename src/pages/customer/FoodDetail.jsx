@@ -2,10 +2,12 @@ import React from 'react'
 import products from '../../data/products'
 import { useState } from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
-
+import { useCart } from '../../context/CartContext'
+import { Link } from "react-router-dom";
 
 const FoodDetail = () => {
   const {id} = useParams();
+  const {addtocart} = useCart();
   const navigate = useNavigate();
   const product = products.find((item)=>
         item.id === Number(id));
@@ -14,11 +16,22 @@ const FoodDetail = () => {
   const [qty,setQty] = useState(1);
   const selectSize =product.sizes.find((item)=> item.name === size);
   const Total =(product.price + selectSize.price) * qty;
-
+ 
+  const pdu =products.find((item)=> item,id === Number(id));
+  if(!pdu){
+    return <h1>Foot not found</h1>
+  }
   return (
-  
-    <div className="min-h-screen w-full bg-orange-50 flex justify-center items-center px-4 py-10">
+    <div className="min-h-screen w-full bg-orange-50 px-4 py-10 items-center">
+       <Link
+              to="/"
+              className="bg-[#FFF0DC] text-[#633817] px-7 py-4 rounded-full font-bold hover:bg-amber-200 transition"
+            >
+              ← Continue Shopping
+            </Link>
 
+      <div className="min-h-screen w-full bg-orange-50 flex justify-center items-center px-4 py-10">
+        
       {/* Main Card */}
       <div className="w-full max-w-5xl bg-white rounded-3xl shadow-xl overflow-hidden">
 
@@ -168,6 +181,7 @@ const FoodDetail = () => {
 
             {/* Add to Cart */}
             <button
+              onClick={()=> addtocart(product)}
               type="button"
               className="w-full bg-orange-500 text-white py-4 rounded-xl font-bold hover:bg-orange-600 transition flex items-center justify-center gap-2 shadow-md"
             >
@@ -177,6 +191,7 @@ const FoodDetail = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
