@@ -29,12 +29,12 @@ function Navbar({ cartCount = 0, onOpenCart }) {
                     className="flex items-center gap-2"
                 >
                     <img
-                        src=""
+                        src="src/assets/Image/customer_Logo.jpg"
                         alt="KhmerFood Logo"
                         className="h-16 w-16 object-contain"
                     />
                     <span className="text-3xl font-black tracking-tight text-black">
-                        Khmer<span className="text-[#FF6B00]">Food</span>
+                        Khmer<span className="text-[#ef7118]">Food</span>
                     </span>
                 </button>
 
