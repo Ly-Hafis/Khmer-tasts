@@ -116,7 +116,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
 
                     {/* LEFT CONTENT */}
                     <div className="relative z-10">
-                        <span className="inline-flex items-center gap-2 rounded-full border border-red-100 bg-white/80 px-5 py-2 text-xs font-bold text-[#E60012] shadow-sm">
+                        <span className="inline-flex items-center gap-2 rounded-full border border-red-100 bg-white/80 px-5 py-2 text-xs font-bold text-orange-500 shadow-sm">
                             ✨ Fresh & Delicious Every Day
                         </span>
 
@@ -124,7 +124,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
                             Delicious Food
                             <span className="relative mt-1 block text-orange-500">
                                 Made With Love
-                                <span className="absolute -right-2 top-0 text-3xl font-normal text-[#E60012] sm:right-10">
+                                <span className="absolute -right-2 top-0 text-3xl font-normal text-orange-500 sm:right-10">
                                     ♡
                                 </span>
                             </span>
@@ -140,7 +140,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
                         <div className="mt-8 flex flex-wrap gap-4">
                             <button
                                 onClick={() => handleGoToMenu("All")}
-                                className="h-10 w-36 cursor-pointer rounded-lg bg-[#E60012] text-sm font-bold text-white shadow-md transition hover:bg-[#C4000F]"
+                                className="h-10 w-36 cursor-pointer rounded-lg bg-orange-500 text-sm font-bold text-white shadow-md transition hover:bg-[#C4000F]"
                             >
                                 Order Food →
                             </button>
@@ -148,7 +148,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
                             <button
                                 // onClick={() => setActiveView("about")}
                                 onClick={() => navigate("/about")}
-                                className="h-10 w-36 cursor-pointer rounded-lg border border-gray-200 bg-white text-sm font-bold text-[#101828] shadow-sm transition hover:border-[#E60012] hover:text-[#E60012]"
+                                className="h-10 w-36 cursor-pointer rounded-lg border border-gray-200 bg-white text-sm font-bold text-[#101828] shadow-sm transition hover:border-orange-bg-orange-500 hover:text-orange-bg-orange-500"
                             >
                                 About Us
                             </button>
@@ -192,7 +192,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
                         </div>
 
                         {/* Discount badge */}
-                        <div className="absolute -right-2 top-8 z-20 rounded-full bg-[#E60012] px-7 py-5 text-base font-black text-white shadow-xl shadow-red-200 sm:right-0">
+                        <div className="absolute bg-orange-500 -right-2 top-8 z-20 rounded-full bg- px-7 py-5 text-base font-black text-white shadow-xl shadow-red-200 sm:right-0">
                             20% OFF
                         </div>
                     </div>
@@ -232,9 +232,9 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
                             <img
                                 src={category.img || category.image}
                                 alt={category.name}
-                                className="h-14 w-14 rounded-full border-2 border-orange-100 object-cover transition group-hover:border-[#E60012]"
+                                className="h-14 w-14 rounded-full border-2 border-orange-100 object-cover transition group-hover:border-orange-bg-orange-500"
                             />
-                            <span className="font-bold text-[#172033] transition group-hover:text-[#E60012]">
+                            <span className="font-bold text-[#172033] transition group-hover:text-orange-bg-orange-500">
                                 {category.name}
                             </span>
                         </button>
@@ -242,7 +242,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
 
                     <button
                         onClick={() => handleGoToMenu("All")}
-                        className="h-[40px] w-[180px] cursor-pointer rounded-xl bg-[#E60012] text-sm font-bold text-white shadow-md transition hover:-translate-y-1 hover:bg-[#C4000F]"
+                        className="h-[40px] w-[180px] cursor-pointer rounded-xl bg-orange-500 text-sm font-bold text-white shadow-md transition hover:-translate-y-1 hover:bg-[#C4000F]"
                     >
                         View All →
                     </button>
@@ -255,7 +255,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
 
                     <div className="mb-8 flex items-center justify-between gap-4">
                         <div>
-                            <p className="text-xs font-bold uppercase tracking-[3px] text-[#E60012]">
+                            <p className="text-xs font-bold uppercase tracking-[3px] text-orange-500">
                                 Our Selection
                             </p>
                             <h2 className="mt-2 text-2xl font-black text-[#101828] md:text-3xl">
@@ -268,7 +268,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
 
                         <button
                             onClick={() => handleGoToMenu("All")}
-                            className="shrink-0 cursor-pointer text-sm font-bold text-[#E60012] hover:underline"
+                            className="shrink-0 cursor-pointer text-sm font-bold text-orange-500 hover:underline"
                         >
                             See Full Menu →
                         </button>
@@ -288,7 +288,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
                                             className="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
                                         />
 
-                                        <span className="absolute left-3 top-3 rounded-full bg-[#E60012] px-3 py-1 text-xs font-bold text-white">
+                                        <span className="absolute left-3 top-3 rounded-full bg-orange-500 px-3 py-1 text-xs font-bold text-white">
                                             {food.category}
                                         </span>
 
@@ -311,7 +311,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
 
                                 <div className="px-4 pb-4">
                                     <div className="flex items-center justify-between gap-2 border-t border-gray-100 pt-3">
-                                        <span className="text-lg font-black text-[#E60012]">
+                                        <span className="text-lg font-black text-orange-bg-orange-500">
                                             ${Number(String(food.price).replace('$', '')).toFixed(2)}
                                         </span>
 
@@ -321,14 +321,14 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
                                                     navigate(`/food/${food.id}`, { state: { food } });
                                                     window.scrollTo({ top: 0, behavior: "smooth" });
                                                 }}
-                                                className="cursor-pointer rounded-lg border border-gray-300 px-3 py-1.5 text-xs font-semibold text-[#101828] transition hover:border-[#E60012] hover:text-[#E60012]"
+                                                className="cursor-pointer rounded-lg border border-gray-300 px-3 py-1.5 text-xs font-semibold text-[#101828] transition hover:border-orange-bg-orange-500 hover:text-orange-bg-orange-500"
                                             >
                                                 Details
                                             </button>
 
                                             <button
                                                 onClick={() => handleAddToCart(food)}
-                                                className="cursor-pointer rounded-lg bg-[#E60012] px-3 py-1.5 text-xs font-bold text-white transition hover:bg-[#C4000F] active:scale-95"
+                                                className="cursor-pointer rounded-lg bg-orange-500 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-orange-700 active:scale-95"
                                             >
                                                 + Add
                                             </button>

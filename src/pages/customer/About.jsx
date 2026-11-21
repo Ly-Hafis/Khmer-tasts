@@ -88,7 +88,7 @@ function About({ setActiveView }) {
 
                         <h1 className="mt-4 text-4xl font-black leading-tight md:text-5xl lg:text-6xl">
                             We Make Your
-                            <span className="block text-[#43A526]">
+                            <span className="block text-orange-500">
                                 Food Experience
                             </span>
                             Special
@@ -107,7 +107,7 @@ function About({ setActiveView }) {
 
                         <button
                             onClick={() => setActiveView("menu")}
-                            className="mt-8 h-[45px] w-[180px] rounded-3 rounded-xl bg-[#43A526] font-bold text-white shadow-lg transition hover:-translate-y-1 hover:bg-[#32851C]"
+                            className="mt-8 h-[45px] w-[180px] rounded-3 rounded-xl bg-orange-500 font-bold text-white shadow-lg transition hover:-translate-y-1 hover:bg-[#32851C]"
                         >
                             Order Now →
                         </button>
@@ -117,14 +117,14 @@ function About({ setActiveView }) {
                     {/* RIGHT IMAGE */}
                     <div className="relative">
 
-                        <div className="rounded-[45px] bg-gradient-to-br from-[#43A526] to-[#D6EAC6] p-2 shadow-xl md:p-3">
+                        <div className="rounded-[45px] bg-gradient-to-br from-orange-500 to-[#D6EAC6] p-2 shadow-xl md:p-3">
 
                             <img
                                 src="https://i.pinimg.com/736x/0d/b2/d7/0db2d7df2d54107b2b5fa364dc2673f6.jpg"
                                 alt="Delicious Khmer food"
                                 className="h-[320px] w-full rounded-[35px] object-cover md:h-[420px]"
                             />
-                            [11/21/2026 2:23 PM] Vannak Panha: </div>
+                             </div>
 
                         <div className="absolute -bottom-5 -left-5 flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-[#FFF0D1] text-3xl shadow-lg">
                             🍜
@@ -158,7 +158,7 @@ function About({ setActiveView }) {
 
                     <div className="mb-12 text-center">
 
-                        <p className="font-bold uppercase tracking-widest text-[#43A526]">
+                        <p className="font-bold uppercase tracking-widest text-orange-500">
                             Why Choose Us
                         </p>
 
@@ -222,7 +222,7 @@ function About({ setActiveView }) {
 
                     <div className="mb-10 text-center">
 
-                        <p className="font-bold uppercase tracking-widest text-[#43A526]">
+                        <p className="font-bold uppercase tracking-widest text-orange-500">
                             Customer Reviews
                         </p>
 
@@ -244,7 +244,7 @@ function About({ setActiveView }) {
                                 key={review.name}
                                 className="rounded-2xl border border-[#F0E5D1] bg-white/95 p-7 shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-xl"
                             >
-                                [11/21/2026 2:23 PM] Vannak Panha: <div className="text-xl tracking-wider text-[#43A526]">
+                                <div className="text-xl tracking-wider text-orange-500">
                                     ★★★★★
                                 </div>
 
