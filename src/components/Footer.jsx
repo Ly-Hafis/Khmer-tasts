@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Footer = ({ setActiveView }) => {
     const handleNavigate = (view) => {
@@ -9,12 +10,12 @@ const Footer = ({ setActiveView }) => {
     };
 
     const customerLinks = [
-        { name: "Home", view: "home" },
+        { name: "Home", view: "/" },
         { name: "Our Menu", view: "menu" },
-        { name: "Store Branches", view: "locations" },
         { name: "About Our Story", view: "about" },
         { name: "Contact Us", view: "contact" },
     ];
+    const navigate = useNavigate()
 
     return (
         <footer className="w-full bg-[#0f172a] text-white">
@@ -49,7 +50,7 @@ const Footer = ({ setActiveView }) => {
                         {customerLinks.map((item) => (
                             <li key={item.name}>
                                 <button
-                                    onClick={() => handleNavigate(item.view)}
+                                    onClick={() => navigate(item.view)}
                                     className="text-left text-slate-400 transition-colors hover:text-[#ff9f0a]"
                                 >
                                     {item.name}
@@ -109,7 +110,7 @@ const Footer = ({ setActiveView }) => {
                     </ul>
                 </div>
             </div>
-            [11/21/2026 2:28 PM] Vannak Panha: {/* Copyright */}
+            {/* Copyright */}
             <div className="border-t border-slate-800">
                 <div className="mx-auto max-w-7xl px-6 py-7 text-center">
                     <p className="text-[12px] text-slate-500">
