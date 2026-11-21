@@ -108,7 +108,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
 
                         <h1 className="mt-7 text-4xl font-black leading-tight tracking-tight text-[#172033] sm:text-5xl lg:text-6xl">
                             Delicious Food
-                            <span className="relative mt-1 block text-[#E60012]">
+                            <span className="relative mt-1 block text-orange-500">
                                 Made With Love
                                 <span className="absolute -right-2 top-0 text-3xl font-normal text-[#E60012] sm:right-10">
                                     ♡
