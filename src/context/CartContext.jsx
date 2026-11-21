@@ -36,7 +36,9 @@ export const CartProvider = ({ children }) => {
 
     setCart((prevCart) => {
       const exist = prevCart.find(
-        (item) => item.id === product.id
+        (item) => item.id === product.id &&
+        item.selectedSize ===
+        product.selectedSize && item.selectedSpicy === product.selectedSpicy
       );
 
       if (exist) {

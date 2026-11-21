@@ -3,7 +3,7 @@ import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
-  const { cart } = useCart();
+  const { cart,placeOrder } = useCart();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -29,24 +29,32 @@ const Checkout = () => {
     });
   };
 
+ 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (cart.length === 0) {
-      alert("Your cart is empty!");
-      return;
+        alert("Your cart is empty!");
+        return;
     }
 
-    navigate("/order-success", {
-      state: {
+    // Save Order and Clear Cart
+    const newOrder = placeOrder({
         customer: form,
-        items: cart,
-        subtotal:Totalprice,
+        items: [...cart],
+        subtotal: Totalprice,
         deliveryFee,
         total,
-      },
     });
-  };
+
+    // Go to Order Success
+    navigate("/order-success", {
+        state: {
+            order: newOrder,
+        },
+    });
+};
 
   if (cart.length === 0) {
     return (

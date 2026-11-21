@@ -15,7 +15,7 @@ const Menu = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-amber-50">
 
       <div className="relative w-full h-[380px] md:h-[430px] overflow-hidden">
         <img

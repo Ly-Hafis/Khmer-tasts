@@ -1,11 +1,12 @@
 import { FiDollarSign, FiShoppingBag, FiUsers, FiBox, FiTrendingUp } from 'react-icons/fi';
 import { FaShoppingBag } from 'react-icons/fa';
 import { useOutletContext } from 'react-router-dom';
+import initialOrders from '../../data/orders';
 import { useState } from 'react';
 
 const Dashboard = () => {
 
-    const [realStats, setRealStats] = useState(()=>{
+    const [realStats, setRealStats] = useState(() => {
         const savedCustomers = JSON.parse(localStorage.getItem('customer_users')) || [];
         const savedProducts = JSON.parse(localStorage.getItem('admin_products')) || [];
 
@@ -25,33 +26,20 @@ const Dashboard = () => {
     ];
 
     //​ Mock Data for Recent Orders Table
-    const recentOrders = [
-        { id: "#ORD-001", customer: "Sok San", total: "$15.50", status: "Completed", date: "Today, 10:30 AM" },
-        { id: "#ORD-002", customer: "Chan Dara", total: "$8.00", status: "Pending", date: "Today, 11:15 AM" },
-        { id: "#ORD-003", customer: "Ly Hour", total: "$22.40", status: "Preparing", date: "Today, 12:00 PM" },
-        { id: "#ORD-004", customer: "Sim Sreyrath", total: "$12.00", status: "Pending", date: "Today, 01:20 PM" },
-        { id: "#ORD-005", customer: "Chea Vuthy", total: "$35.00", status: "Completed", date: "Today, 02:15 PM" },
-        { id: "#ORD-006", customer: "Ouk Sovann", total: "$9.50", status: "Preparing", date: "Today, 02:45 PM" },
-        { id: "#ORD-007", customer: "Meas Mony", total: "$18.75", status: "Completed", date: "Today, 03:10 PM" },
-        { id: "#ORD-008", customer: "Keo Piseth", total: "$42.00", status: "Pending", date: "Today, 03:30 PM" },
-        { id: "#ORD-009", customer: "Seng Rithy", total: "$14.25", status: "Completed", date: "Today, 04:05 PM" },
-        { id: "#ORD-010", customer: "Chhorn Dina", total: "$6.50", status: "Preparing", date: "Today, 04:20 PM" },
-        { id: "#ORD-011", customer: "Khiev Samnang", total: "$27.90", status: "Completed", date: "Yesterday, 09:30 AM" },
-        { id: "#ORD-012", customer: "Tep Bopha", total: "$11.00", status: "Completed", date: "Yesterday, 10:45 AM" },
-        { id: "#ORD-013", customer: "Yorn Channary", total: "$31.50", status: "Pending", date: "Yesterday, 11:20 AM" },
-        { id: "#ORD-014", customer: "Prak Seyha", total: "$19.80", status: "Completed", date: "Yesterday, 12:15 PM" },
-        { id: "#ORD-015", customer: "Ngeth Sopheak", total: "$15.00", status: "Preparing", date: "Yesterday, 01:30 PM" },
-        { id: "#ORD-016", customer: "Vong Vutha", total: "$24.50", status: "Completed", date: "Yesterday, 02:40 PM" },
-        { id: "#ORD-017", customer: "Ros Sreymao", total: "$7.25", status: "Pending", date: "Yesterday, 03:55 PM" },
-        { id: "#ORD-018", customer: "Pen Sovan", total: "$16.40", status: "Completed", date: "Yesterday, 05:10 PM" },
-        { id: "#ORD-019", customer: "Long Nita", total: "$21.00", status: "Completed", date: "Yesterday, 06:25 PM" },
-        { id: "#ORD-020", customer: "Nuon Makara", total: "$13.75", status: "Preparing", date: "Yesterday, 07:45 PM" },
-    ];
+    let recentOrders = initialOrders;
+    try {
+        const savedOrders = localStorage.getItem('admin_orders');
+        if (savedOrders) {
+            recentOrders = JSON.parse(savedOrders);
+        }
+    } catch (error) {
+        console.error("Local storage error:", error);
+    }
 
     // Filter name
     const filteredOrders = recentOrders.filter((order) => {
         return (
-            order.customer.toLowerCase().includes(search.toLowerCase()) ||
+            order.customerName.toLowerCase().includes(search.toLowerCase()) ||
             order.id.toLowerCase().includes(search.toLowerCase())
         );
     });
@@ -128,7 +116,7 @@ const Dashboard = () => {
                                 filteredOrders.map((order, index) => (
                                     <tr key={index} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">
                                         <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">{order.id}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{order.customer}</td>
+                                        <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{order.customerName}</td>
                                         <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">{order.date}</td>
                                         <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">{order.total}</td>
                                         <td className="px-6 py-4 text-sm">

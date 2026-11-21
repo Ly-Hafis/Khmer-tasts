@@ -299,7 +299,7 @@ const Settings = () => {
                                         <input
                                             type="password"
                                             placeholder="••••••••"
-
+                                            value={password.currentPassword}
                                             onChange={(e) => setPassword({ ...password, currentPassword: e.target.value })}
                                             className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500 outline-none dark:text-white transition-all"
                                         />
