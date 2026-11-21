@@ -63,6 +63,20 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
+    const handleAddToCart = (food) => {
+        const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+        const foundIndex = existingCart.findIndex((item) => item.id === food.id);
+
+        if (foundIndex > -1) {
+            existingCart[foundIndex].quantity = (existingCart[foundIndex].quantity || 1) + 1;
+        } else {
+            existingCart.push({ ...food, quantity: 1 });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(existingCart));
+        window.dispatchEvent(new Event("cartUpdated")); // ប្រាប់ Navbar ឱ្យបូកលេខភ្លាម!
+    };
+
     return (
         <div className="overflow-hidden bg-white text-[#101828]">
 
@@ -134,7 +148,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
                             <button
                                 // onClick={() => setActiveView("about")}
                                 onClick={() => navigate("/about")}
-                                className="h-10 w-36 cursor-pointer rounded-lg border border-gray-200 bg-white text-sm font-bold text-[#101828] shadow-sm transition hover:border-[#E60012] hover:text-[#E60012]"
+                                className="h-10 w-36 cursor-pointer rounded-lg border border-gray-200 bg-white text-sm font-bold text-[#101828] shadow-sm transition hover:border-orange-bg-orange-500 hover:text-orange-bg-orange-500"
                             >
                                 About Us
                             </button>
@@ -218,9 +232,9 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
                             <img
                                 src={category.img || category.image}
                                 alt={category.name}
-                                className="h-14 w-14 rounded-full border-2 border-orange-100 object-cover transition group-hover:border-[#E60012]"
+                                className="h-14 w-14 rounded-full border-2 border-orange-100 object-cover transition group-hover:border-orange-bg-orange-500"
                             />
-                            <span className="font-bold text-[#172033] transition group-hover:text-[#E60012]">
+                            <span className="font-bold text-[#172033] transition group-hover:text-orange-bg-orange-500">
                                 {category.name}
                             </span>
                         </button>
@@ -274,7 +288,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
                                             className="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
                                         />
 
-                                        <span className="absolute left-3 top-3 rounded-full bg-[#E60012] px-3 py-1 text-xs font-bold text-white">
+                                        <span className="absolute left-3 top-3 rounded-full bg-orange-500 px-3 py-1 text-xs font-bold text-white">
                                             {food.category}
                                         </span>
 
@@ -297,21 +311,24 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
 
                                 <div className="px-4 pb-4">
                                     <div className="flex items-center justify-between gap-2 border-t border-gray-100 pt-3">
-                                        <span className="text-lg font-black text-[#E60012]">
-                                            ${Number(food.price).toFixed(2)}
+                                        <span className="text-lg font-black text-orange-bg-orange-500">
+                                            ${Number(String(food.price).replace('$', '')).toFixed(2)}
                                         </span>
 
                                         <div className="flex gap-1.5">
                                             <button
-                                                onClick={() => goToMenuWithCategory(food.category)}
-                                                className="cursor-pointer rounded-lg border border-gray-300 px-3 py-1.5 text-xs font-semibold text-[#101828] transition hover:border-[#E60012] hover:text-[#E60012]"
+                                                onClick={() => {
+                                                    navigate(`/food/${food.id}`, { state: { food } });
+                                                    window.scrollTo({ top: 0, behavior: "smooth" });
+                                                }}
+                                                className="cursor-pointer rounded-lg border border-gray-300 px-3 py-1.5 text-xs font-semibold text-[#101828] transition hover:border-orange-bg-orange-500 hover:text-orange-bg-orange-500"
                                             >
                                                 Details
                                             </button>
 
                                             <button
-                                                onClick={() => addToCart(food, 1)}
-                                                className="cursor-pointer rounded-lg bg-[#E60012] px-3 py-1.5 text-xs font-bold text-white transition hover:bg-[#C4000F] active:scale-95"
+                                                onClick={() => handleAddToCart(food)}
+                                                className="cursor-pointer rounded-lg bg-orange-500 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-orange-700 active:scale-95"
                                             >
                                                 + Add
                                             </button>
