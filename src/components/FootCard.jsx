@@ -31,7 +31,7 @@ const FootCard = ({ product }) => {
       <div className="mt-4 px-1">
         <div className="flex items-center justify-between mb-3">
           <span className="text-lg sm:text-xl font-extrabold text-gray-900">
-            {product.price}$
+            ${Number(String(product.price).replace('$', '')).toFixed(2)}
           </span>
 
           {/* Quantity Stepper */}

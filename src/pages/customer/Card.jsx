@@ -65,7 +65,7 @@ const Card = () => {
                   </h3>
 
                   <p className="text-red-500 font-bold text-lg">
-                    ${item.price}
+                    ${Number(String(item.price).replace('$', '')).toFixed(2)}
                   </p>
 
                   <p className="text-gray-500 text-sm">

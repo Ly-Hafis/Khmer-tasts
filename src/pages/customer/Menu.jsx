@@ -8,7 +8,19 @@ const Menu = () => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
 
-  const filterFood = products.filter((food) => {
+  const [foods] = useState(() => {
+    try {
+      const saved = localStorage.getItem("admin_products");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (error) {
+      console.error("Failed to load products:", error);
+    }
+    return products;
+  });
+  const filterFood = foods.filter((food) => {
     const matchSearch = food.name.toLowerCase().includes(search.toLowerCase());
     const matchCategory = category === "All" || food.category === category;
     return matchSearch && matchCategory;

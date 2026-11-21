@@ -4,7 +4,6 @@ import defaultCategories from "../../data/categories";
 import { NavLink, useNavigate } from "react-router-dom";
 
 function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
-    // ១. ទាញទិន្នន័យ Categories ពី LocalStorage មុន បើអត់មានយកពី Category.js
     const navigate = useNavigate();
     const [categories] = useState(() => {
         try {
