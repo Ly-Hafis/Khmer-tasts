@@ -63,6 +63,20 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
+    const handleAddToCart = (food) => {
+        const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+        const foundIndex = existingCart.findIndex((item) => item.id === food.id);
+
+        if (foundIndex > -1) {
+            existingCart[foundIndex].quantity = (existingCart[foundIndex].quantity || 1) + 1;
+        } else {
+            existingCart.push({ ...food, quantity: 1 });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(existingCart));
+        window.dispatchEvent(new Event("cartUpdated")); // ប្រាប់ Navbar ឱ្យបូកលេខភ្លាម!
+    };
+
     return (
         <div className="overflow-hidden bg-white text-[#101828]">
 
@@ -298,19 +312,22 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
                                 <div className="px-4 pb-4">
                                     <div className="flex items-center justify-between gap-2 border-t border-gray-100 pt-3">
                                         <span className="text-lg font-black text-[#E60012]">
-                                            ${Number(food.price).toFixed(2)}
+                                            ${Number(String(food.price).replace('$', '')).toFixed(2)}
                                         </span>
 
                                         <div className="flex gap-1.5">
                                             <button
-                                                onClick={() => goToMenuWithCategory(food.category)}
+                                                onClick={() => {
+                                                    navigate(`/food/${food.id}`, { state: { food } });
+                                                    window.scrollTo({ top: 0, behavior: "smooth" });
+                                                }}
                                                 className="cursor-pointer rounded-lg border border-gray-300 px-3 py-1.5 text-xs font-semibold text-[#101828] transition hover:border-[#E60012] hover:text-[#E60012]"
                                             >
                                                 Details
                                             </button>
 
                                             <button
-                                                onClick={() => addToCart(food, 1)}
+                                                onClick={() => handleAddToCart(food)}
                                                 className="cursor-pointer rounded-lg bg-[#E60012] px-3 py-1.5 text-xs font-bold text-white transition hover:bg-[#C4000F] active:scale-95"
                                             >
                                                 + Add
