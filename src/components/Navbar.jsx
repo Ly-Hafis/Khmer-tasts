@@ -104,8 +104,8 @@ function Navbar() {
                                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                                 className={({ isActive }) =>
                                     `text-base font-semibold transition duration-200 ${isActive
-                                        ? "text-[#E60012]"
-                                        : "text-[#172033] hover:text-[#E60012]"
+                                        ? "text-orange-600"
+                                        : "text-[#172033] hover:text-orange-600"
                                     }`
                                 }
                             >
@@ -119,7 +119,7 @@ function Navbar() {
                         {/* CART BUTTON */}
                         <button
                             onClick={() => setCartOpen(true)}
-                            className="relative flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-[#172033] transition hover:bg-gray-100 hover:text-[#E60012]"
+                            className="relative flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-[#172033] transition hover:bg-orange-100 hover:text-orange-500"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +147,7 @@ function Navbar() {
                         <div className="relative">
                             <button
                                 onClick={() => setProfileOpen(!profileOpen)}
-                                className="flex h-[50px] cursor-pointer items-center gap-3 rounded-xl border border-gray-200 px-4 transition hover:border-[#E60012]"
+                                className="flex h-[50px] cursor-pointer items-center gap-3 rounded-xl border border-gray-200 px-4 transition hover:border-orange-400"
                             >
                                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F1F5F9] text-[#475569]">
                                     <svg
@@ -186,20 +186,20 @@ function Navbar() {
                                 <div className="absolute right-0 top-14 w-52 rounded-xl border border-gray-100 bg-white p-2 shadow-xl">
                                     <button
                                         onClick={() => handleGoTo("/login")}
-                                        className="w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium text-gray-700 transition hover:bg-gray-50 hover:text-[#E60012]"
+                                        className="w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium text-gray-700 transition hover:bg-gray-50 hover:text-amber-600"
                                     >
                                         Login
                                     </button>
                                     <button
                                         onClick={() => handleGoTo("/register")}
-                                        className="w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium text-gray-700 transition hover:bg-gray-50 hover:text-[#E60012]"
+                                        className="w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium text-gray-700 transition hover:bg-gray-50 hover:text-amber-600"
                                     >
                                         Register
                                     </button>
                                     <div className="my-1.5 border-t border-gray-100" />
                                     <button
                                         onClick={() => setProfileOpen(false)}
-                                        className="w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm text-gray-500 transition hover:bg-gray-50 hover:text-[#E60012]"
+                                        className="w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm text-gray-500 transition hover:bg-gray-50 hover:text-amber-600"
                                     >
                                         Close Profile
                                     </button>

@@ -41,17 +41,16 @@ const Footer = ({ setActiveView }) => {
                 </div>
 
                 {/* Customer Links */}
-                <div>
+                <div className="">
                     <h3 className="mb-4 text-[13px] font-bold uppercase">
                         Customer Links
                     </h3>
-
                     <ul className="space-y-2.5 text-[13px]">
                         {customerLinks.map((item) => (
                             <li key={item.name}>
                                 <button
                                     onClick={() => navigate(item.view)}
-                                    className="text-left text-slate-400 transition-colors hover:text-[#ff9f0a]"
+                                    className="cursor-pointer text-left text-slate-400 transition-colors hover:text-[#ff9f0a]"
                                 >
                                     {item.name}
                                 </button>
@@ -59,6 +58,7 @@ const Footer = ({ setActiveView }) => {
                         ))}
                     </ul>
                 </div>
+
 
                 {/* Opening Hours */}
                 <div>
