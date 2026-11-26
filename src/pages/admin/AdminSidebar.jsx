@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { FiGrid, FiShoppingBag, FiList, FiBox, FiUsers, FiStar, FiSettings } from 'react-icons/fi';
-import logo from "../assets/Image/Logo.jpg";
+import logo from "../../assets/Image/Logo.png";
 
 const AdminSidebar = ({ isOpen }) => {
   const location = useLocation();
