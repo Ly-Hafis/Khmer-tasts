@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import logo from "../assets/Image/customer_Logo.jpg";
 
 function Navbar() {
     const {
@@ -77,7 +78,7 @@ function Navbar() {
                         className="flex cursor-pointer items-center gap-2"
                     >
                         <img
-                            src="/src/assets/Image/customer_Logo.jpg"
+                            src={logo}
                             alt="KhmerFood Logo"
                             className="h-16 w-16 object-contain"
                         />
