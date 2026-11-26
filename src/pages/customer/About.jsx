@@ -82,7 +82,7 @@ function About({ setActiveView }) {
                     {/* LEFT CONTENT */}
                     <div>
 
-                        <span className="font-bold uppercase tracking-[4px] text-[#43A526]">
+                        <span className="font-bold uppercase tracking-[4px] text-orange-500">
                             About KhmerFood
                         </span>
 
@@ -107,7 +107,7 @@ function About({ setActiveView }) {
 
                         <button
                             onClick={() => setActiveView("menu")}
-                            className="mt-8 h-[45px] w-[180px] rounded-3 rounded-xl bg-orange-500 font-bold text-white shadow-lg transition hover:-translate-y-1 hover:bg-[#32851C]"
+                            className="mt-8 h-[45px] w-[180px] rounded-3 rounded-xl bg-orange-500 font-bold text-white shadow-lg transition hover:-translate-y-1 hover:bg-orange-600"
                         >
                             Order Now →
                         </button>
@@ -179,7 +179,7 @@ function About({ setActiveView }) {
 
                             <div
                                 key={item.title}
-                                className="rounded-2xl border border-[#E5EEDB] bg-white/90 p-7 text-center shadow-sm transition duration-300 hover:-translate-y-2 hover:border-[#43A526] hover:shadow-xl"
+                                className="rounded-2xl border border-[#E5EEDB] bg-white/90 p-7 text-center shadow-sm transition duration-300 hover:-translate-y-2 hover:border-orange-600 hover:shadow-xl"
                             >
 
                                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EFF8E9] text-4xl shadow-sm">
@@ -289,7 +289,7 @@ function About({ setActiveView }) {
 
                 <div className="pointer-events-none absolute -right-20 top-0 -z-10 h-72 w-72 rounded-full bg-[#F5B65B]/10 blur-3xl" />
 
-                <div className="relative mx-auto grid max-w-5xl grid-cols-2 gap-6 rounded-3xl border border-[#A5C77D] bg-gradient-to-r from-[#174900] via-[#286A08] to-[#174900] p-8 text-center text-white shadow-xl md:grid-cols-4">
+                <div className="relative mx-auto grid max-w-5xl grid-cols-2 gap-6 rounded-3xl border border-[#A5C77D] bg-gradient-to-r bg-orange-500 p-8 text-center text-white shadow-xl md:grid-cols-4">
 
                     {statistics.map((item) => (
 

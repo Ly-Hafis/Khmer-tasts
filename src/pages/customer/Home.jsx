@@ -139,7 +139,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
                         <div className="mt-8 flex flex-wrap gap-4">
                             <button
                                 onClick={() => handleGoToMenu("All")}
-                                className="h-10 w-36 cursor-pointer rounded-lg bg-orange-500 text-sm font-bold text-white shadow-md transition hover:bg-[#C4000F]"
+                                className="h-10 w-36 cursor-pointer rounded-lg bg-orange-500 text-sm font-bold text-white shadow-md transition hover:bg-amber-600"
                             >
                                 Order Food →
                             </button>
@@ -241,7 +241,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
 
                     <button
                         onClick={() => handleGoToMenu("All")}
-                        className="h-[40px] w-[180px] cursor-pointer rounded-xl bg-orange-500 text-sm font-bold text-white shadow-md transition hover:-translate-y-1 hover:bg-[#C4000F]"
+                        className="h-[40px] w-[180px] cursor-pointer rounded-xl bg-orange-500 text-sm font-bold text-white shadow-md transition hover:-translate-y-1 hover:bg-amber-600"
                     >
                         View All →
                     </button>
@@ -327,7 +327,7 @@ function Home({ setActiveView, goToMenuWithCategory, addToCart }) {
 
                                             <button
                                                 onClick={() => handleAddToCart(food)}
-                                                className="cursor-pointer rounded-lg bg-orange-500 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-orange-700 active:scale-95"
+                                                className="cursor-pointer rounded-lg bg-orange-500 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-orange-600 active:scale-95"
                                             >
                                                 + Add
                                             </button>

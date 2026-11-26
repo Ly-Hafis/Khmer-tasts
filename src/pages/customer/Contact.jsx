@@ -221,7 +221,7 @@ function Contact() {
             {/* SUBMIT BUTTON */}
             <button
               type="submit"
-              className="flex items-center gap-2 rounded-lg bg-[#eb3b3b] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-orange-600 active:scale-95"
+              className="cursor-pointer flex items-center gap-2 rounded-lg bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-orange-600 active:scale-95"
             >
               <span>➤</span>
               Submit Message
