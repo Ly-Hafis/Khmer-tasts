@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { FiGrid, FiShoppingBag, FiList, FiBox, FiUsers, FiStar, FiSettings } from 'react-icons/fi';
+import logo from "../assets/Image/Logo.jpg";
 
 const AdminSidebar = ({ isOpen }) => {
   const location = useLocation();
@@ -22,7 +23,7 @@ const AdminSidebar = ({ isOpen }) => {
       {/*Logo */}
       <div className="h-[150px] flex-col items-center px-8">
         <div className='w-[120px] m-auto'>
-          <img src="/src/assets/Image/Logo.png" alt="" className='w-[100%]' />
+          <img src={logo} alt="" className='w-[100%]' />
         </div>
         <h1 className="text-2xl font-bold text-white text-center">Khmer<span className=' text-orange-500'>Food</span> Admin</h1>
       </div>
