@@ -3,10 +3,12 @@ import FootCard from '../../components/FootCard';
 import products from '../../data/products';
 import cate from '../../data/categories';
 import SearchBar from '../../components/SearchBar';
+import { useLocation } from 'react-router-dom';
 
 const Menu = () => {
+  const location = useLocation();
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
+  const [category, setCategory] = useState(location.state?.selectedCategory || "All");
 
   const [foods] = useState(() => {
     try {

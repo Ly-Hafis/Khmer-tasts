@@ -37,26 +37,27 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) => {
       const exist = prevCart.find(
         (item) => item.id === product.id &&
-        item.selectedSize ===
-        product.selectedSize && item.selectedSpicy === product.selectedSpicy
+          item.selectedSize ===
+          product.selectedSize && item.selectedSpicy === product.selectedSpicy
       );
 
       if (exist) {
         return prevCart.map((item) =>
           item.id === product.id
             ? {
-                ...item,
-                quantity: Number(item.quantity || 0) + addedQty
-              }
+              ...item,
+              quantity: Number(item.quantity || 0) + addedQty
+            }
             : item
         );
       }
 
+      const cleanPrice = Number(String(product.price).replace('$', '')) || 0;
       return [
         ...prevCart,
         {
           ...product,
-          price: Number(product.price),
+          price: cleanPrice,
           quantity: addedQty
         }
       ];
@@ -100,7 +101,7 @@ export const CartProvider = ({ children }) => {
   // Total Price
   const Totalprice = cart.reduce(
     (total, item) =>
-      total + Number(item.price) * Number(item.quantity),
+      total + (Number(String(item.price).replace('$', '')) || 0) * Number(item.quantity),
     0
   );
 
